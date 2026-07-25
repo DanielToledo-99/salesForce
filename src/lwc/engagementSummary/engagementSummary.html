@@ -1,0 +1,78 @@
+<template>
+    <lightning-card title="Engagement Summary" icon-name="standard:engagement">
+
+        <template if:true={error}>
+            <div class="slds-notify slds-notify_alert slds-alert_error slds-m-around_small" role="alert">
+                <lightning-icon icon-name="utility:error" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                <h2>{error}</h2>
+            </div>
+        </template>
+
+        <template if:true={isLoading}>
+            <div class="slds-align_absolute-center slds-p-around_large">
+                <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:false={isLoading}>
+            <div class="slds-grid slds-wrap slds-gutters slds-p-around_medium">
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-bottom_small">
+                    <div class="summary-card summary-card_green">
+                        <div class="summary-card__icon">
+                            <lightning-icon icon-name="utility:moneybag" size="medium" class="icon-white"></lightning-icon>
+                        </div>
+                        <div class="summary-card__body">
+                            <p class="summary-card__label">Opportunity Amount</p>
+                            <p class="summary-card__value">{formattedAmount}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-bottom_small">
+                    <div class="summary-card summary-card_blue">
+                        <div class="summary-card__icon">
+                            <lightning-icon icon-name="utility:task" size="medium" class="icon-white"></lightning-icon>
+                        </div>
+                        <div class="summary-card__body">
+                            <p class="summary-card__label">Completed Tasks</p>
+                            <p class="summary-card__value">{completedTasksCount}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-bottom_small">
+                    <div class="summary-card summary-card_orange">
+                        <div class="summary-card__icon">
+                            <lightning-icon icon-name="utility:event" size="medium" class="icon-white"></lightning-icon>
+                        </div>
+                        <div class="summary-card__body">
+                            <p class="summary-card__label">Upcoming Events</p>
+                            <p class="summary-card__value">{upcomingEventsCount}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="slds-p-horizontal_medium slds-p-bottom_x-small">
+                <p class="slds-text-body_small slds-text-color_weak">
+                    <lightning-icon icon-name="utility:record" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                    Engagement: <strong>{engagementName}</strong>
+                </p>
+            </div>
+
+            <div slot="footer" class="slds-text-align_right">
+                <lightning-button
+                    variant="brand"
+                    label="Quick Follow-Up Call"
+                    icon-name="utility:call"
+                    icon-position="left"
+                    onclick={handleCreateFollowUp}
+                    disabled={isActionLoading}>
+                </lightning-button>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>

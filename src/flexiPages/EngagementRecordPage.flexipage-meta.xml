@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Default record page for Engagement__c</description>
+    <masterLabel>Engagement Record Page</masterLabel>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>engagementSummary</componentName>
+                <identifier>c_engagementSummary</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <name>rightsidebar</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <name>leftsidebar</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <sobjectType>Engagement__c</sobjectType>
+    <template>
+        <name>flexipage:recordHomePinnedRightSidebarTemplateDesktop</name>
+        <properties>
+            <name>enablePageActionConfig</name>
+            <value>false</value>
+        </properties>
+    </template>
+    <type>RecordPage</type>
+</FlexiPage>
